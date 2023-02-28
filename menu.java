@@ -46,7 +46,7 @@ public class menu {
                     System.out.println("Regression Linear value : Y = "+ca.calculateCA()+" x X + "+cl.calculateCL()+"");
                     break;
                 case 2:
-
+                    
                    
                     break;
                 case 3:
