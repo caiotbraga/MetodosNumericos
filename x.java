@@ -13,4 +13,12 @@ public class x {
         xAxis[contx] = value;
         contx++;
     }
+
+    public int getLength(){
+        return xAxis.length;
+    }
+
+    public double getValue(int index){
+        return xAxis[index];
+    }
 }

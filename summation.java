@@ -12,22 +12,37 @@ public class summation {
     }
 
     public Double sum2Axis(){
-            for(int i = 0; i < this.xAxis.length; i++){
-                result = (this.xAxis[i] * valuesT[i]) + result;
+            for(int i = 0; i < xAxis.getLength(); i++){
+                result = (xAxis.getValue(i) * yAxis.getValue(i)) + result;
             }
             return result;
     }
 
-    public Double sumSquare(){
-        for(int i = 0; i < valuesO.length; i++){
-            result = (valuesO[i] * valuesO[i]) + result;
+    public Double sumSquareX(){
+        for(int i = 0; i < xAxis.getLength(); i++){
+            result = (Math.pow(xAxis.getValue(i), 2)) + result;
         }
         return result;
     }
 
-    public Double sumAxis(){
-        for(int i = 0; i < valuesO.length; i++){
-            result = valuesO[i] + result;
+    public Double sumSquareY(){
+        for(int i = 0; i < xAxis.getLength(); i++){
+            result = (Math.pow(yAxis.getValue(i), 2)) + result;
+        }
+        return result;
+    }
+    
+
+    public Double sumAxisX(){
+        for(int i = 0; i < xAxis.getLength(); i++){
+            result = xAxis.getValue(i) + result;
+        }
+        return result;
+    }
+
+    public Double sumAxisY(){
+        for(int i = 0; i < xAxis.getLength(); i++){
+            result = yAxis.getValue(i) + result;
         }
         return result;
     }

@@ -9,9 +9,11 @@ public class cAngular {
     public cAngular(x x, y y){
         this.xAxis = x;
         this.yAxis = y;
+        sum = new summation(x, y);
     }
 
     public double calculateCA(){
-
+        return ((xAxis.getLength() * sum.sum2Axis()) - (sum.sumAxisX() * sum.sumAxisY())) / 
+        ((xAxis.getLength() * sum.sumSquareX()) - (sum.sumSquareX()));
     }
 }

@@ -13,4 +13,12 @@ public class y {
         yAxis[conty] = value;
         conty++;
     }
+
+    public int getLength(){
+        return yAxis.length;
+    }
+
+    public double getValue(int index){
+        return yAxis[index];
+    }
 }
