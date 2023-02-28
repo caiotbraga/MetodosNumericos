@@ -2,9 +2,15 @@ package MN;
 
 public class x {
     
-    Double [] Xaxis;
+    private Double [] xAxis;
+    private int contx = 0;
 
-    public x(Double [] vec){
-        Xaxis = vec;
+    public x(int index){
+        xAxis = new Double[index];
+    }
+
+    public void addValue(Double value){
+        contx++;
+        xAxis[contx] = value;
     }
 }

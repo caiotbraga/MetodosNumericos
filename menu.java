@@ -5,12 +5,14 @@ import java.util.Scanner;
 public class menu {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int op, cont = 0;
-        Double [] xAxis = new Double[cont];
-        Double [] yAxis;
+        int op, length;
+        x xAxis;
+        y yAxis;
+        // Double [] xAxis = new Double[contx];
+        //Double [] yAxis;
         Double value;
         char ans = 'o';
-        
+        x vecx;
         do {
             menu();
             op = in.nextInt();
@@ -20,35 +22,27 @@ public class menu {
             }
         switch (op) {
             case 1:
-            xAxis = new Double[cont];
-            System.out.print("Insert a value: ");
-            value = in.nextDouble();
-            xAxis[cont] = value;
-            while(ans == 'Y'){
-                cont++;
-                System.out.print("Insert a value: ");
+            System.out.println("Insert x axis element´s length: ");
+            length = in.nextInt();
+            xAxis = new x(length);
+            for(int i = 0; i < length; i++){
+                System.out.print("Insert the value of x axis on xAxis["+i+"]: ");
                 value = in.nextDouble();
-                xAxis[cont] = value;
-                System.out.print("Insert more? ");
-                ans = in.next().charAt(0);
+                xAxis.addValue(value);
             }
             break;
             case 2:
-            yAxis = new Double[cont];
-            System.out.print("Insert a value: ");
-            value = in.nextDouble();
-            yAxis[cont] = value;
-            while(ans == 'Y'){
-                cont++;
-                System.out.print("Insert a value: ");
+            System.out.println("Insert y axis element´s length: ");
+            length = in.nextInt();
+            yAxis = new y(length);
+            for(int i = 0; i < length; i++){
+                System.out.print("Insert the value of y axis on yAxis["+i+"]: ");
                 value = in.nextDouble();
-                yAxis[cont] = value;
-                System.out.print("Insert more? ");
-                ans = in.next().charAt(0);
+                yAxis.addValue(value);
             }
             break;
             case 3:
-                x Xaxis = new x(xAxis);
+                
                 break;
             // ...
             default:
@@ -62,6 +56,7 @@ public class menu {
         System.out.println("Linear regression calculation:");
         System.out.println("1 - Add values to X axis");
         System.out.println("2 - Add values to Y axis");
-        System.out.println("3 - Exit");
+        System.out.println("3 - Linear regression line value");
+        System.out.println("4 - Linear correlation coefficient");
     }
 }
