@@ -10,7 +10,7 @@ public class x {
     }
 
     public void addValue(Double value){
-        contx++;
         xAxis[contx] = value;
+        contx++;
     }
 }

@@ -2,22 +2,18 @@ package MN;
 
 public class summation {
     
-    Double [] valuesO;
-    Double [] valuesT;
+    private x xAxis;
+    private y yAxis;
     Double result = 0.0;
     
-    public summation (Double [] vec){
-        valuesO = vec;
-    }
-
-    public summation (Double [] vec1, Double [] vec2){
-        valuesO = vec1;
-        valuesT = vec2;
+    public summation(x x, y y){
+        this.xAxis = x;
+        this.yAxis = y;
     }
 
     public Double sum2Axis(){
-            for(int i = 0; i < valuesO.length; i++){
-                result = (valuesO[i] * valuesT[i]) + result;
+            for(int i = 0; i < this.xAxis.length; i++){
+                result = (this.xAxis[i] * valuesT[i]) + result;
             }
             return result;
     }

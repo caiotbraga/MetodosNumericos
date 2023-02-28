@@ -10,7 +10,7 @@ public class y {
     }
 
     public void addValue(Double value){
-        conty++;
         yAxis[conty] = value;
+        conty++;
     }
 }

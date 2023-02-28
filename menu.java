@@ -8,11 +8,8 @@ public class menu {
         int op, length;
         x xAxis;
         y yAxis;
-        // Double [] xAxis = new Double[contx];
-        //Double [] yAxis;
         Double value;
-        char ans = 'o';
-        x vecx;
+        cAngular ca;
         do {
             menu();
             op = in.nextInt();
@@ -22,24 +19,22 @@ public class menu {
             }
         switch (op) {
             case 1:
-            System.out.println("Insert x axis element´s length: ");
+            System.out.println("Insert x and y axis element´s length: ");
             length = in.nextInt();
             xAxis = new x(length);
+            yAxis = new y(length);
             for(int i = 0; i < length; i++){
                 System.out.print("Insert the value of x axis on xAxis["+i+"]: ");
                 value = in.nextDouble();
                 xAxis.addValue(value);
-            }
-            break;
-            case 2:
-            System.out.println("Insert y axis element´s length: ");
-            length = in.nextInt();
-            yAxis = new y(length);
-            for(int i = 0; i < length; i++){
                 System.out.print("Insert the value of y axis on yAxis["+i+"]: ");
                 value = in.nextDouble();
                 yAxis.addValue(value);
             }
+            ca = new cAngular(xAxis, yAxis);
+            break;
+            case 2:
+            
             break;
             case 3:
                 
