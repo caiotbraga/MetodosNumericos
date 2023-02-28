@@ -11,6 +11,7 @@ public class menu {
         Double value;
         cAngular ca;
         cLinear cl;
+        summation sum;
         do {
             menu();
             op = in.nextInt();
@@ -20,7 +21,7 @@ public class menu {
             }
             switch (op) {
                 case 1:
-                    System.out.println("Insert x and y axis element´s length: ");
+                    System.out.println("Insert x and y axis element's length: ");
                     length = in.nextInt();
                     xAxis = new x(length);
                     yAxis = new y(length);
@@ -34,10 +35,15 @@ public class menu {
                     }
                     ca = new cAngular(xAxis, yAxis);
                     cl = new cLinear(xAxis, yAxis);
+                    sum = new summation(xAxis, yAxis);
                     for(int j = 0; j < length; j++){
-                        System.out.println("X["+j+"] :" +xAxis.getValue(j)+ "Y["+j+"] : " +yAxis.getValue(j));
+                        System.out.println("X["+j+"] :" +xAxis.getValue(j)+
+                        " Y["+j+"] : " +yAxis.getValue(j)+
+                        " X.Y : "+sum.multiply(j)+
+                        " X^2 :"+Math.pow(xAxis.getValue(j), 2));
                     }
-                    System.out.printf("Regression Linear value : Y = %a x X + %l", ca.calculateCA(), cl.calculateCL());
+                    System.out.println("EX :"+sum.sumAxisX()+" EY :"+sum.sumAxisY()+" EX.Y :"+sum.sumMultiply()+" EX^2 :"+sum.sumSquareX());
+                    System.out.println("Regression Linear value : Y = "+ca.calculateCA()+" x X + "+cl.calculateCL()+"");
                     break;
                 case 2:
 

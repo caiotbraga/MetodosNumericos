@@ -13,7 +13,7 @@ public class cAngular {
     }
 
     public double calculateCA(){
-        return ((xAxis.getLength() * sum.sum2Axis()) - (sum.sumAxisX() * sum.sumAxisY())) / 
-        ((xAxis.getLength() * sum.sumSquareX()) - (sum.sumSquareX()));
+        return ((xAxis.getLength() * sum.sumMultiply()) - (sum.sumAxisX() * sum.sumAxisY())) / 
+        ((xAxis.getLength() * sum.sumSquareX()) - (Math.pow(sum.sumAxisX(), 2)));
     }
 }
