@@ -5,6 +5,7 @@ public class coeficientecl {
     private x xAxis;
     private y yAxis;
     private summation sum;
+    
 
     public coeficientecl(x x, y y){
         this.xAxis = x;
@@ -13,8 +14,14 @@ public class coeficientecl {
     }
 
     public Double calculateCCL(){
-        return ((xAxis.getLength() * sum.sumMultiply()) - (sum.sumAxisX() * sum.sumAxisY())) / 
-        Math.sqrt(((xAxis.getLength() * sum.sumSquareX()) - Math.pow(sum.sumAxisX(), 2)) 
-        * (xAxis.getLength() * sum.sumSquareY())- (Math.pow(sum.sumAxisY(), 2)));
+       double r = ((xAxis.getLength() * sum.sumMultiply()) - (sum.sumAxisX() * sum.sumAxisY())) * 100;
+       double r2 = ((xAxis.getLength() * sum.sumSquareX()) - Math.pow(sum.sumAxisX(), 2)); //585
+       double r3 = (xAxis.getLength() * sum.sumSquareY()) - (Math.pow(sum.sumAxisY(), 2)); //525
+       double r4 = r2 * r3;
+       
+       
+       
+       
+        return   r / Math.sqrt(r4);
     }
 }

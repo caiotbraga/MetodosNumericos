@@ -12,57 +12,39 @@ public class menu {
         cAngular ca;
         cLinear cl;
         summation sum;
-        do {
-            menu();
-            op = in.nextInt();
-            while (op != 1 && op != 2 && op != 3) {
-                System.out.println("Invalid option! Please insert a valid one:");
-                op = in.nextInt();
+        coeficientecl ccl;
+        try {
+            System.out.println("Insert x and y axis element's length: ");
+            length = in.nextInt();
+            xAxis = new x(length);
+            yAxis = new y(length);
+            for (int i = 0; i < length; i++) {
+                System.out.print("Insert the value of x axis on xAxis[" + (i + 1) + "]: ");
+                value = in.nextDouble();
+                xAxis.addValue(value);
+                System.out.print("Insert the value of y axis on yAxis[" + (i + 1) + "]: ");
+                value = in.nextDouble();
+                yAxis.addValue(value);
             }
-            switch (op) {
-                case 1:
-                    System.out.println("Insert x and y axis element's length: ");
-                    length = in.nextInt();
-                    xAxis = new x(length);
-                    yAxis = new y(length);
-                    for (int i = 0; i < length; i++) {
-                        System.out.print("Insert the value of x axis on xAxis[" + i + "]: ");
-                        value = in.nextDouble();
-                        xAxis.addValue(value);
-                        System.out.print("Insert the value of y axis on yAxis[" + i + "]: ");
-                        value = in.nextDouble();
-                        yAxis.addValue(value);
-                    }
-                    ca = new cAngular(xAxis, yAxis);
-                    cl = new cLinear(xAxis, yAxis);
-                    sum = new summation(xAxis, yAxis);
-                    for(int j = 0; j < length; j++){
-                        System.out.println("X["+j+"] :" +xAxis.getValue(j)+
-                        " Y["+j+"] : " +yAxis.getValue(j)+
-                        " X.Y : "+sum.multiply(j)+
-                        " X^2 :"+Math.pow(xAxis.getValue(j), 2));
-                    }
-                    System.out.println("EX :"+sum.sumAxisX()+" EY :"+sum.sumAxisY()+" EX.Y :"+sum.sumMultiply()+" EX^2 :"+sum.sumSquareX());
-                    System.out.println("Regression Linear value : Y = "+ca.calculateCA()+" x X + "+cl.calculateCL()+"");
-                    break;
-                case 2:
-                    
-                   
-                    break;
-                case 3:
-
-                    break;
-                // ...
-                default:
-                    // código a ser executado quando nenhum dos casos anteriores é satisfeito
+            ca = new cAngular(xAxis, yAxis);
+            cl = new cLinear(xAxis, yAxis);
+            sum = new summation(xAxis, yAxis);
+            System.out.println("-------------------------------------------");
+            for (int j = 0; j < length; j++) {
+                System.out.printf("X[" + j + "] : %.2f | Y[" + j + "] : %.2f | X.Y : %.2f | X^2 : %.2f | Y^2 : %.2f \n"
+                ,xAxis.getValue(j), yAxis.getValue(j), sum.multiply(j),  Math.pow(xAxis.getValue(j), 2), Math.pow(yAxis.getValue(j), 2));
             }
-        } while (op != 3);
+            System.out.println("-------------------------------------------");
+            System.out.println("SUMMATION: ");
+            System.out.printf("X : %.2f | Y : %.2f | X.Y : %.2f | X^2 : %.2f | Y^2 : %.2f \n"
+             , sum.sumAxisX(),  sum.sumAxisY(), sum.sumMultiply(), sum.sumSquareX(), sum.sumSquareY());
+            System.out.printf("Regression Linear value : Y = %.2f x X + %.2f \n", ca.calculateCA(), cl.calculateCL());
+            ccl = new coeficientecl(xAxis, yAxis);
+            System.out.printf("Linear regression  coefficient: %.2f%%", ccl.calculateCCL());
 
-    }
-
-    public static void menu() {
-        System.out.println("Linear regression calculation:");
-        System.out.println("1 - Add values to X and Y axis to calculate Linear regression line");
-        System.out.println("2 - Linear correlation coefficient");
+        } catch (Exception e) {
+            System.out.println("ERROR");
+            System.out.println(e.getMessage());
+        }
     }
 }
