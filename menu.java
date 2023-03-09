@@ -15,6 +15,7 @@ public class menu {
         coeficientecl ccl;
         r2 r2;
         predict y;
+        sqr sqr;
         System.out.println("Insert x and y axis element's length: ");
         length = in.nextInt();
         xAxis = new x(length);
@@ -23,6 +24,9 @@ public class menu {
         ca = new cAngular(xAxis, yAxis);
         cl = new cLinear(xAxis, yAxis);
         y = new predict(ca, cl);
+        r2 = new r2(xAxis, yAxis, ccl);
+        sum = new summation(xAxis, yAxis);
+        sqr = new sqr(r2, yAxis, sum);
         try {
             do {
                 menu();
@@ -37,7 +41,7 @@ public class menu {
                             value = in.nextDouble();
                             yAxis.addValue(value);
                         }
-                        sum = new summation(xAxis, yAxis);
+                       
                         System.out.println("-------------------------------------------");
                         for (int j = 0; j < length; j++) {
                             System.out.printf(
@@ -56,7 +60,6 @@ public class menu {
                         System.out.printf("Linear regression  coefficient: %.2f%%\n", ccl.calculateCCL());
                         break;
                     case 2:
-                        r2 = new r2(xAxis, yAxis, ccl);
                         System.out.printf("R^2 value: %.2f\n", r2.calculater2());
                         break;
                     case 3:
@@ -64,12 +67,14 @@ public class menu {
                         x = in.nextDouble();
                         System.out.printf("Y = %.2f\n", y.calculateValue(x));
                         break;
+                    case 4: 
+                        System.out.printf("SQR : %.2f \n" , sqr.calculateSQR());
                     default:
                         // código a ser executado se expressao não for igual a nenhum dos valores
                         // especificados
                         break;
                 }
-            } while (op != 4);
+            } while (op != 5);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -81,7 +86,8 @@ public class menu {
         System.out.println("1 - Calculate regression linear line and regression coefficient");
         System.out.println("2 - Calculate r2");
         System.out.println("3 - Predict value");
-        System.out.println("4 - Exit");
+        System.out.println("4 - Calculate SQR");
+        System.out.println("5 - Exit");
         System.out.println("-----------------------------------------------------------------------------------------");
     }
 }
