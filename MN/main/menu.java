@@ -1,5 +1,7 @@
 package MN.main;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import MN.predict;
@@ -9,13 +11,14 @@ import MN.CalculateCoefficient.coeficientecl;
 import MN.CalculateCoefficient.determinationCoefficient;
 import MN.CalculateCoefficient.sqr;
 import MN.E.summation;
-import Variable.x;
-import Variable.y;
+import MN.GaussJacobMethod.gaussJacobi;
+import MN.Variable.x;
+import MN.Variable.y;
 
 public class menu {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int op, length;
+        int op, length, quantity;
         x xAxis;
         y yAxis;
         Double value, x;
@@ -26,6 +29,7 @@ public class menu {
         determinationCoefficient r2;
         predict y;
         sqr sqr;
+        gaussJacobi variable;
         System.out.println("Insert x and y axis element's length: ");
         length = in.nextInt();
         xAxis = new x(length);
@@ -79,12 +83,17 @@ public class menu {
                         break;
                     case 4: 
                         System.out.printf("SQR : %.2f \n" , sqr.calculateSQR());
+                        break;
+                    case 5:
+                        System.out.print("Insert the number of variable: ");
+                        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+                        
                     default:
                         // código a ser executado se expressao não for igual a nenhum dos valores
                         // especificados
                         break;
                 }
-            } while (op != 5);
+            } while (op != 6);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -97,7 +106,8 @@ public class menu {
         System.out.println("2 - Calculate r2");
         System.out.println("3 - Predict value");
         System.out.println("4 - Calculate SQR");
-        System.out.println("5 - Exit");
+        System.out.println("5 - Solve linear system");
+        System.out.println("6 - Exit");
         System.out.println("-----------------------------------------------------------------------------------------");
     }
 }

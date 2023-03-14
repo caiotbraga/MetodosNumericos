@@ -1,7 +1,7 @@
 package MN.CalculateCoefficient;
 
 import MN.E.summation;
-import Variable.y;
+import MN.Variable.y;
 
 public class sqr {
     private determinationCoefficient r2;

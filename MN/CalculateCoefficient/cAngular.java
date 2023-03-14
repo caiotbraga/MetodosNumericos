@@ -1,8 +1,8 @@
 package MN.CalculateCoefficient;
 
 import MN.E.summation;
-import Variable.x;
-import Variable.y;
+import MN.Variable.x;
+import MN.Variable.y;
 
 public class cAngular {
     
