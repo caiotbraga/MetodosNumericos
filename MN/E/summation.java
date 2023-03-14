@@ -1,7 +1,7 @@
 package MN.E;
 
-import Variable.y;
-import Variable.x;
+import MN.Variable.x;
+import MN.Variable.y;
 public class summation {
 
     private x xAxis;

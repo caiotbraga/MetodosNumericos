@@ -1,4 +1,4 @@
-package Variable;
+package MN.Variable;
 
 public class y {
 
