@@ -1,5 +1,7 @@
-package MN;
+package MN.E;
 
+import Variable.y;
+import Variable.x;
 public class summation {
 
     private x xAxis;

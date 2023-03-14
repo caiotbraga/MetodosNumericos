@@ -1,4 +1,4 @@
-package MN;
+package Variable;
 
 public class x {
     

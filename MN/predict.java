@@ -1,5 +1,8 @@
 package MN;
 
+import MN.CalculateCoefficient.cAngular;
+import MN.CalculateCoefficient.cLinear;
+
 public class predict {
     private cAngular ca;
     private cLinear cl;

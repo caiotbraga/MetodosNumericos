@@ -1,6 +1,16 @@
-package MN;
+package MN.main;
 
 import java.util.Scanner;
+
+import MN.predict;
+import MN.CalculateCoefficient.cAngular;
+import MN.CalculateCoefficient.cLinear;
+import MN.CalculateCoefficient.coeficientecl;
+import MN.CalculateCoefficient.determinationCoefficient;
+import MN.CalculateCoefficient.sqr;
+import MN.E.summation;
+import Variable.x;
+import Variable.y;
 
 public class menu {
     public static void main(String[] args) {
@@ -13,7 +23,7 @@ public class menu {
         cLinear cl;
         summation sum;
         coeficientecl ccl;
-        r2 r2;
+        determinationCoefficient r2;
         predict y;
         sqr sqr;
         System.out.println("Insert x and y axis element's length: ");
@@ -24,7 +34,7 @@ public class menu {
         ca = new cAngular(xAxis, yAxis);
         cl = new cLinear(xAxis, yAxis);
         y = new predict(ca, cl);
-        r2 = new r2(xAxis, yAxis, ccl);
+        r2 = new determinationCoefficient(ccl);
         sum = new summation(xAxis, yAxis);
         sqr = new sqr(r2, yAxis, sum);
         try {

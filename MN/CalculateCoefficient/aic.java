@@ -1,10 +1,10 @@
-package MN;
+package MN.CalculateCoefficient;
 
 public class aic {
     private sqr sqr;
-    private x x;
+    private Variable.x x;
 
-    public aic(MN.sqr sqr, MN.x x) {
+    public aic(MN.CalculateCoefficient.sqr sqr, Variable.x x) {
         this.sqr = sqr;
         this.x = x;
     }
