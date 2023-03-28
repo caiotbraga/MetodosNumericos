@@ -30,6 +30,31 @@ public class gaussJacobi {
                 dominant = false;
             }
         }
+        if(dominant == true){
+            return dominant;
+        }else{
+            int DOM = 0;
+            for(int i = 0; i < equation.length; i++){
+                for(int j = 0; j < equation.length; j++){
+                    value += Math.abs(equation[i][j]);
+                    if(value == equation[i][i]){
+                        value = 0.0;
+                    }
+                }
+                if(Math.abs(equation[i][i]) == value){
+                    dominant = true;
+
+                }else if(Math.abs(equation[i][i]) > value){
+                    DOM++;
+                    dominant = true;
+                }else{
+                    dominant = false;
+                }
+            }
+        if(DOM == 0){
+            dominant = false;
+        }
+        }
         return dominant;
     }
 }
