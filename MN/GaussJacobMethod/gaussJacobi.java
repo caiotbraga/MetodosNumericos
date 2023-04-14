@@ -1,17 +1,14 @@
 package MN.GaussJacobMethod;
 
-public class gaussJacobi {
-    
-    private int quantity;
-    private double [][] equation;
-    private double [] equationResult;
-    private double value;
-    
+import java.util.Arrays;
 
-    public gaussJacobi(int  quantity) {
-        this.quantity = quantity;
-        this.equation = new double[quantity][quantity];
-        this.equationResult = new double [quantity];
+public class gaussJacobi {
+
+    private double [][] equation;
+    private int maxInterations = 100;
+
+    public gaussJacobi(double [] [] M) {
+        this.equation = M;
     }
 
     public boolean checkDominant(){
@@ -51,10 +48,48 @@ public class gaussJacobi {
                     dominant = false;
                 }
             }
-        if(DOM == 0){
+            if(DOM == 0){
             dominant = false;
-        }
+            }
         }
         return dominant;
     }
+
+    public void solve()
+  {
+    int iterations = 0;
+    int n = equation.length;
+    double epsilon = 1e-15;
+    double[] X = new double[n]; // Approximations
+    double[] P = new double[n]; // Prev
+    Arrays.fill(X, 0);
+    Arrays.fill(P, 0);
+
+    while (true) {
+      for (int i = 0; i < n; i++) {
+        double sum = equation[i][n]; // b_n
+
+        for (int j = 0; j < n; j++)
+          if (j != i)
+            sum -= equation[i][j] * P[j];
+        X[i] = 1/equation[i][i] * sum;
+      }
+
+      System.out.print("X-" +(iterations + 1)+ " = {");
+      for (int i = 0; i < n; i++)
+        System.out.printf("%.2f", X[i]);
+      System.out.println("}");
+
+      iterations++;
+      if (iterations == 1) continue;
+
+      boolean stop = true;
+      for (int i = 0; i < n && stop; i++)
+        if (Math.abs(X[i] - P[i]) > epsilon)
+          stop = false;
+
+      if (stop || iterations == maxInterations) break;
+      P = (double[])X.clone();
+    }
+  }
 }

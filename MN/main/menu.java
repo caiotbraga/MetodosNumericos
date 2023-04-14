@@ -2,7 +2,9 @@ package MN.main;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 import MN.predict;
 import MN.CalculateCoefficient.cAngular;
@@ -29,7 +31,6 @@ public class menu {
         determinationCoefficient r2;
         predict y;
         sqr sqr;
-        gaussJacobi variable;
         System.out.println("Insert x and y axis element's length: ");
         length = in.nextInt();
         xAxis = new x(length);
@@ -85,10 +86,27 @@ public class menu {
                         System.out.printf("SQR : %.2f \n" , sqr.calculateSQR());
                         break;
                     case 5:
-                        System.out.print("Insert the number of variable: ");
+                        int n;
+                        double[][] M;
+                        System.out.print("Insert the number of variables: ");
                         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-                        
-                    default:
+                        PrintWriter writer = new PrintWriter(System.out, true);
+                        n = Integer.parseInt(reader.readLine());
+                        M = new double[n][n+1];
+                        for (int i = 0; i < n; i++) {
+                            StringTokenizer strtk = new StringTokenizer(reader.readLine());
+                      
+                            while (strtk.hasMoreTokens())
+                            for (int j = 0; j < n + 1 && strtk.hasMoreTokens(); j++){
+                                M[i][j] = Integer.parseInt(strtk.nextToken());
+                            }
+                        }
+                        gaussJacobi variable = new gaussJacobi(M);
+                        if(variable.checkDominant() == false){
+                            System.out.println("This equation isn't dominant!");
+                        }
+                        variable.solve();
+                        default:
                         // código a ser executado se expressao não for igual a nenhum dos valores
                         // especificados
                         break;
